@@ -13,9 +13,9 @@ setup(name='project-firewatch',
       long_description=long_description,
       classifiers=[],
       keywords='',
-      author=u"Sean Gillies",
-      author_email='sean@mapbox.com',
-      url='https://github.com/mapbox/project-firewatch',
+      author=u"Seth Wahle",
+      author_email='osteth@gmail.com',
+      url='https://github.com/ostet/project-firewatch',
       license='MIT',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,
@@ -28,6 +28,6 @@ setup(name='project-firewatch',
       },
       entry_points="""
       [console_scripts]
-      project-firewatch=project-firewatch.scripts.cli:cli
+      projectfirewatch=projectfirewatch.scripts.cli:cli
       """
       )

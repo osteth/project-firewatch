@@ -1,6 +1,6 @@
 from click.testing import CliRunner
 
-from project-firewatch.scripts.cli import cli
+from projectfirewatch.scripts.cli import cli
 
 
 def test_cli_count():

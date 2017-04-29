@@ -28,14 +28,6 @@ a virtual environment. Clone the repo.
     git clone https://github.com/mapbox/project-firewatch myproject
     cd myproject
 
-Replace all occurrences of 'project-firewatch' with the name of your own project.
-(Note: the commands below require bash, find, and sed and are yet tested only on OS X.)
-
-.. code-block:: console
-
-    if [ -d project-firewatch ]; then find . -not -path './.git*' -type f -exec sed -i '' -e 's/project-firewatch/myproject/g' {} + ; fi
-    mv project-firewatch myproject
-
 Then install in locally editable (``-e``) mode and run the tests.
 
 .. code-block:: console

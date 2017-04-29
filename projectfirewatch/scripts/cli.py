@@ -2,12 +2,12 @@
 
 import click
 
-import project-firewatch
+import projectfirewatch
 
 
-@click.command('project-firewatch')
+@click.command('projectfirewatch')
 @click.argument('count', type=int, metavar='N')
 def cli(count):
     """Echo a value `N` number of times"""
     for i in range(count):
-        click.echo(project-firewatch.has_legs)
+        click.echo(projectfirewatch.has_legs)
