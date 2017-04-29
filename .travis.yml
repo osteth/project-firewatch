@@ -1,0 +1,15 @@
+language: python
+python:
+  - "2.7"
+  - "3.4.3"
+install:
+  - "pip install coveralls"
+  - "pip install -e .[test]"
+script: 
+  - py.test
+  - coverage run --source=project-firewatch -m py.test
+after_success:
+  - coveralls
+sudo: false
+notifications:
+  slack: hackbama:fq2Vbcqvo5Y7YQHEjy9PWFd5
