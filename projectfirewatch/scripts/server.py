@@ -337,26 +337,39 @@ def fullmap():
             "position:absolute;"
             "z-index:200;"
         ),
-        lat=37.4419,
-        lng=-122.1419,
+        lat=34.715820, 
+        lng=-86.597105,
+		circles=[{
+            'stroke_color': '#FF00FF',
+            'stroke_opacity': 1.0,
+            'stroke_weight': 7,
+            'fill_color': '#FF00FF',
+            'fill_opacity': 0.2,
+            'center': {
+                'lat': 34.715820,
+                'lng': -86.597999
+            },
+            'radius': 200,
+            'infobox': "This is a circle"
+        }],
         markers=[
             {
                 'icon': '//maps.google.com/mapfiles/ms/icons/green-dot.png',
-                'lat': 37.4419,
-                'lng': -122.1419,
+                'lat': 34.715820,
+                'lng': -86.597999,
                 'infobox': "Hello I am <b style='color:green;'>GREEN</b>!"
             },
             {
                 'icon': '//maps.google.com/mapfiles/ms/icons/blue-dot.png',
-                'lat': 37.4300,
-                'lng': -122.1400,
-                'infobox': "Hello I am <b style='color:blue;'>BLUE</b>!"
+                'lat': 34.716323, 
+                'lng': -86.594007,
+                'infobox': "Sensor: 1, Temp: 86, humidity: 46% ALERT: False"
             },
             {
                 'icon': icons.dots.yellow,
                 'title': 'Click Here',
-                'lat': 37.4500,
-                'lng': -122.1350,
+                'lat': 34.715820,
+                'lng': -86.597000,
                 'infobox': (
                     "Hello I am <b style='color:#ffcc00;'>YELLOW</b>!"
                     "<h2>It is HTML title</h2>"
@@ -365,8 +378,8 @@ def fullmap():
                 )
             }
         ],
-        # maptype = "TERRAIN",
-        # zoom="5"
+        maptype = "TERRAIN",
+        zoom="16"
     )
     return render_template('example_fullmap.html', fullmap=fullmap)
 
