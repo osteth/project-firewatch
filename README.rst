@@ -1,8 +1,8 @@
 project-firewatch
 ======
 
-.. image:: https://travis-ci.org/mapbox/project-firewatch.svg
-   :target: https://travis-ci.org/mapbox/project-firewatch
+.. image:: https://travis-ci.org/osteth/project-firewatch.svg
+   :target: https://travis-ci.org/osteth/project-firewatch
 
 .. image:: https://coveralls.io/repos/mapbox/project-firewatch/badge.png
    :target: https://coveralls.io/r/mapbox/project-firewatch
