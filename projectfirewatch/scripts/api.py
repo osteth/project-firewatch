@@ -10,8 +10,21 @@ def Dump_sat():
 	'''
 	curl -H "Content-Type: application/json" -X POST -d '{"TeamID": "Mudkips","IP": "192.168.0.1","Port": "5001"}' http://localhost:5001/checkin/
 	'''
-	SatDAta= json.load(data.json)
-	return {'Satalite data': SatDAta}
+
+	SatDataTable = []
+
+	with open('MODIS_C6_Global_24h.json', 'r') as SatData:
+		for line in SatData:
+			try:
+				j = line.split('|')[-1]
+				SatDataTable.append(json.loads(j))
+			except ValueError:
+				print("Bad Json File!")
+				continue
+
+
+	return {"Satellite Data": SatDataTable}
+
 
 
 
