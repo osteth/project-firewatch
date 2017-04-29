@@ -1,6 +1,13 @@
 project-firewatch
 ======
 
+contributors:
+Dutch
+Seth
+Thuy
+Nick
+Travis
+
 .. image:: https://travis-ci.org/osteth/project-firewatch.svg
    :target: https://travis-ci.org/osteth/project-firewatch
 
@@ -25,8 +32,7 @@ a virtual environment. Clone the repo.
 
 .. code-block:: console
 
-    git clone https://github.com/mapbox/project-firewatch myproject
-    cd myproject
+    https://github.com/osteth/project-firewatch.git
 
 Then install in locally editable (``-e``) mode and run the tests.
 
