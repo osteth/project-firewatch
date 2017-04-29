@@ -346,36 +346,54 @@ def fullmap():
             'fill_color': '#FF00FF',
             'fill_opacity': 0.2,
             'center': {
-                'lat': 34.715820,
-                'lng': -86.597999
+                'lat': 34.715825, 
+                'lng': -86.597127
             },
-            'radius': 200,
-            'infobox': "This is a circle"
+            'radius': 100,
+            'infobox': "Active Fire Area as reported from MODIS satelite."
         }],
         markers=[
             {
-                'icon': '//maps.google.com/mapfiles/ms/icons/green-dot.png',
-                'lat': 34.715820,
-                'lng': -86.597999,
-                'infobox': "Hello I am <b style='color:green;'>GREEN</b>!"
+                'icon': '//maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                'lat': 34.716769,
+                'lng': -86.597240,
+                'infobox': "Sensor: 1, Temp: 86, humidity: 46% ALERT: False"
             },
             {
                 'icon': '//maps.google.com/mapfiles/ms/icons/blue-dot.png',
                 'lat': 34.716323, 
                 'lng': -86.594007,
-                'infobox': "Sensor: 1, Temp: 86, humidity: 46% ALERT: False"
+                'infobox': "Sensor: 2, Temp: 86, humidity: 46% ALERT: False"
             },
-            {
-                'icon': icons.dots.yellow,
-                'title': 'Click Here',
-                'lat': 34.715820,
-                'lng': -86.597000,
-                'infobox': (
-                    "Hello I am <b style='color:#ffcc00;'>YELLOW</b>!"
-                    "<h2>It is HTML title</h2>"
-                    "<img src='//placehold.it/50'>"
-                    "<br>Images allowed!"
-                )
+			{
+                'icon': '//maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                'lat': 34.715508,
+                'lng': -86.598972,
+                'infobox': "Sensor: 3, Temp: 86, humidity: 46% ALERT: False"
+            },
+			{
+                'icon': '//maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+                'lat': 34.714402,  
+                'lng': -86.599079,
+                'infobox': "Sensor: 4, Temp: 124, humidity: 8% ALERT: Upcoming Alert Probable"
+            },
+			{
+                'icon': '//maps.google.com/mapfiles/ms/icons/red-dot.png',
+                'lat': 34.713745, 
+                'lng': -86.597834,
+                'infobox': "Sensor: 5, Temp: overload, humidity: 0% ALERT: TRUE"
+            },
+			{
+                'icon': '//maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                'lat': 334.713767,  
+                'lng': -86.596396,
+                'infobox': "Sensor: 6, Temp: 86, humidity: 46% ALERT: False"
+            },
+			{
+                'icon': '//maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                'lat': 34.713811, 
+                'lng': -86.594352,
+                'infobox': "Sensor: 7, Temp: 86, humidity: 46% ALERT: False"
             }
         ],
         maptype = "TERRAIN",
