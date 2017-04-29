@@ -21,8 +21,7 @@ def convert(input, output):
 	csvfile = open(input, 'r')
 	jsonfile = open(output, 'w')
 
-	fieldnames = ('latitude', 'longitude', 'brightness', 'scan', 'track', 'acq_date', 'acq_time', 'satellite', 'confidence', 'version', 'bright_t31', 'frp', 'daynight')
-	reader = csv.DictReader( csvfile, fieldnames)
+	reader = csv.DictReader( csvfile)
 	for row in reader:
 		json.dump(row, jsonfile)
 		jsonfile.write('\n')
