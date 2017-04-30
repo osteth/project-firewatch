@@ -1,19 +1,3 @@
-<<<<<<< Updated upstream
-import csv
-import json
-
-def convert():
-    csvfile = open('MODIS_C6_Global_24h.csv', 'r')
-    jsonfile = open('MODIS_C6_Global_24h.json', 'w')
-
-    reader = csv.DictReader( csvfile)
-    for row in reader:
-        json.dump(row, jsonfile)
-        jsonfile.write('\n')
-
-if __name__ == '__main__':
-    convert()
-=======
 #!/usr/bin/python
 
 import csv
@@ -29,7 +13,7 @@ def cli(*args, **kwargs):
 	and load it into a database to overcome the lack of a useable api for this data.
 	Usage: python3 csv-json.py convert -i <input file path> -o <output file path>"""
     pass
-	
+
 @click.command(help='Covert data from csv to json.')
 @click.option('--input', '-i', default='MODIS_C6_Global_24h.csv', help='--input , -i	Sets the file that is to be converted')
 @click.option('--output', '-o', default='MODIS_C6_Global_24h.json', help='--output, -o,   Sets the name of the output.')
@@ -43,10 +27,9 @@ def convert(input, output):
 	for row in reader:
 		json.dump(row, jsonfile)
 		jsonfile.write('\n')
-		
-	
+
+
 cli.add_command(convert)
 
 if __name__ == '__main__':
 	cli()
->>>>>>> Stashed changes
