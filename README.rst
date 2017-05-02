@@ -50,7 +50,25 @@ Finally, give the command line program a try.
     projectfirewatch --help
     projectfirewatch update
 	projectfirewatch start
-
+	
+API
+--------------------
++----------+----------------------+-----------------+
+|Attribute |	Short Description | Long Description|
+|Latitude  |Latitude |Center of 1km fire pixel but not necessarily the actual location of the fire as one or more fires can be detected within the 1km pixel.|
+|Longitude |Longitude |Center of 1km fire pixel but not necessarily the actual location of the fire as one or more fires can be detected within the 1km pixel.|
+|Brightness|Brightness temperature 21 (Kelvin) |Channel 21/22 brightness temperature of the fire pixel measured in Kelvin.|
+|Scan	   |Along Scan pixel size |The algorithm produces 1km fire pixels but MODIS pixels get bigger toward the edge of scan. Scan and track reflect actual pixel size.|
+|Track     |Along Track pixel size |The algorithm produces 1km fire pixels but MODIS pixels get bigger toward the edge of scan. Scan and track reflect actual pixel size.|
+|Acq_Date  |Acquisition Date |Date of MODIS acquisition.|
+|Acq_Time  |Acquisition Time |Time of acquisition/overpass of the satellite (in UTC).|
+|Satellite |Satellite |A = Aqua and T = Terra.|
+|Confidence|Confidence (0-100%) |This value is based on a collection of intermediate algorithm quantities used in the detection process. It is intended to help users gauge the quality of individual hotspot/fire pixels. Confidence estimates range between 0 and 100% and are assigned one of the three fire classes (low-confidence fire, nominal-confidence fire, or high-confidence fire).|
+|Version   |Version (Collection and source) |Version identifies the collection (e.g. MODIS Collection 6) and source of data processing: Near Real-Time (NRT suffix added to collection) or Standard Processing (collection only). "6.0NRT" - Collection 6 NRT processing. "6.0" - Collection 6 Standard processing. Find out more on collections and on the differences between FIRMS data sourced from LANCE FIRMS and University of Maryland.|
+|Bright_T31|Brightness temperature 31 (Kelvin) |Channel 31 brightness temperature of the fire pixel measured in Kelvin.|
+|FRP       |Fire Radiative Power |Depicts the pixel-integrated fire radiative power in MW (megawatts).|
+|DayNight  |Day / Night | D = Daytime, N = Nighttime|
++----------+------------+---------------------------+
 Sensors
 -------------------
 We put together prototype hardware sensors for the competeition that anyone can build and contribute their crowdsource Fire data back to our database via the Project-Firewatch API.

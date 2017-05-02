@@ -22,9 +22,8 @@ app.config['GOOGLEMAPS_KEY'] = "AIzaSyByCF9JlHWGthilogp3Q-Y1qiNaqRtZ6ZQ"
 # you can also pass key here
 GoogleMaps(app, key="AIzaSyByCF9JlHWGthilogp3Q-Y1qiNaqRtZ6ZQ")
 
-
+#begin CLI  Portion
 @click.group()
-
 def cli(*args, **kwargs):
     """Command line utility to easily convert .csv data over to .json data.  This utility was built for the NASA space apps challenge and is defaulted 
 	to be used with cron to pull in data from https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/active-fire-data convert it to json 
@@ -47,7 +46,7 @@ def update(input, output):
 		json.dump(row, jsonfile)
 		jsonfile.write('\n')
 		
-	click.echo('MODIS satelite data updated.')
+	return('MODIS satelite data updated.')
 
 @click.command(help='Start/Stop the mapping and API server.')
 def start():
@@ -56,7 +55,9 @@ def start():
 cli.add_command(update)
 cli.add_command(start)
 
+#End CLI portion
 
+#begin Auxiliary Functions
 def LLR():
     llr_dict = {}
 
@@ -82,7 +83,9 @@ def LLR():
             #print(stroke_color,fill_color,lon,lat,radius)'''
     return llr_dict
 	
+#End Auxilary Functions
 
+#Begin API
 @app.route("/api/", methods=['GET', 'POST'])
 def Dump_sat():
 	'''
@@ -102,8 +105,12 @@ def Dump_sat():
 
 
 	return {"Satellite Data": SatDataTable}
+
 	
-@app.route('/fullmap')
+#End API
+
+#Bgin Map
+@app.route('/')
 def fullmap():
     firedata = LLR()
     fullmap = Map(
@@ -181,6 +188,7 @@ def fullmap():
     )
     return render_template('example_fullmap.html', fullmap=fullmap)
 
+#End Map
 
 if __name__ == "__main__":
     cli()
