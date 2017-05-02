@@ -1,5 +1,5 @@
 project-firewatch
-======
+===================
 
 Team Members:
 Dutch, Seth Wahle, Thuy Pham, Nick Hershey, Jason Cuneo
@@ -19,9 +19,14 @@ provide users with granularly accurate yet highly encompassing wildfire informat
 
 .. raw:: html
 
+    <embed>
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="//www.youtube.com/embed/89fEaPE4wlw" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+        <iframe src="//www.youtube.com/embed/89fEaPE4wlw" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; 
+        width: 100%; height: 100%;"></iframe>
     </div>
+    </embed>
+
+
 
 .. contents:: **Table of Contents**
   :backlinks: none
@@ -60,19 +65,19 @@ Data Explanation
 +----------+-----------------------------------+------------------------------------------------------------------------------------+
 |Attribute |Short Description                  |Long Description                                                                    |
 +==========+===================================+====================================================================================+
-|Latitude  |Latitude                           |Center of 1km fire pixel but not necessarily the actual location of                 | 
+|Latitude  |Latitude                           |Center of 1km fire pixel but not necessarily the actual location of                 |
 |          |                                   |the fire as one or more fires can be detected within the 1km pixel.                 |
 +----------+-----------------------------------+------------------------------------------------------------------------------------+
 |Longitude |Longitude                          |Center of 1km fire pixel but not necessarily the actual location of                 |
 |          |                                   |the fire as one or more fires can be detected within the 1km pixel.                 |
-+----------------------------------------------+------------------------------------------------------------------------------------+
-|Brightness|Brightness temperature 21          |(Kelvin) |Channel 21/22 brightness temperature of the fire pixel measured in Kelvin.|
++----------+-----------------------------------+------------------------------------------------------------------------------------+
+|Brightness|Brightness temperature 21(Kelvin)  |Channel 21/22 brightness temperature of the fire pixel measured in Kelvin.          |
 +----------+-----------------------------------+------------------------------------------------------------------------------------+
 |Scan	   |Along Scan pixel size              |The algorithm produces 1km fire pixels but MODIS pixels get bigger toward the edge  |
-|          |                                   |of scan. Scan and track reflect actual pixel size.                                  |
+|          |                                   |of the scan. Scan and track reflect actual pixel size.                              |
 +----------+-----------------------------------+------------------------------------------------------------------------------------+
 |Track     |Along Track pixel size             |The algorithm produces 1km fire pixels but MODIS pixels get bigger toward the edge  |
-|          |                                   |of scan. Scan and track reflect actual pixel size.                                  |
+|          |                                   |of the scan. Scan and track reflect actual pixel size.                              |
 +----------+-----------------------------------+------------------------------------------------------------------------------------+
 |Acq_Date  |Acquisition Date                   |Date of MODIS acquisition.                                                          |
 +----------+-----------------------------------+------------------------------------------------------------------------------------+
@@ -90,8 +95,8 @@ Data Explanation
 |          |                                   |processing: Near Real-Time (NRT suffix added to collection) or Standard Processing  |
 |          |                                   |(collection only). "6.0NRT" - Collection 6 NRT processing. "6.0" - Collection 6     |
 |          |                                   |Standard processing. Find out more on collections and on the differences between    |
-|          |                                   |FIRMS data sourced from LANCE FIRMS and University of Maryland.                     |
-+----------|-----------------------------------+------------------------------------------------------------------------------------+
+|          |                                   |FIRMS data sourced from LANCE FIRMS and the University of Maryland.                 |
++----------+-----------------------------------+------------------------------------------------------------------------------------+
 |Bright_T31|Brightness temperature 31 (Kelvin) |Channel 31 brightness temperature of the fire pixel measured in Kelvin.             |
 +----------+-----------------------------------+------------------------------------------------------------------------------------+
 |FRP       |Fire Radiative Power               |Depicts the pixel-integrated fire radiative power in MW (megawatts).                |
