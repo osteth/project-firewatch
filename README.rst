@@ -1,12 +1,12 @@
 project-firewatch
 ======
 
-contributors:
+Team Members:
 Dutch
-Seth
-Thuy
-Nick
-Travis
+Seth Wahle
+Thuy Pham
+Nick Hershey
+Jason Cuneo
 
 .. image:: https://travis-ci.org/osteth/project-firewatch.svg
    :target: https://travis-ci.org/osteth/project-firewatch
@@ -58,16 +58,16 @@ We put together prototype hardware sensors for the competeition that anyone can 
 
 .. image:: http://i.imgur.com/35RY8X0.jpg
 
-.. _Orange pi zero - $6.99: https://www.aliexpress.com/store/product/New-Orange-Pi-Zero-H2-Quad-Core-Open-source-development-board-beyond-Raspberry-Pi/1553371_32760774493.html?spm=2114.12010108.0.0.RDPr6Z
+`Orange pi zero <https://www.aliexpress.com/store/product/New-Orange-Pi-Zero-H2-Quad-Core-Open-source-development-board-beyond-Raspberry-Pi/1553371_32760774493.html?spm=2114.12010108.0.0.RDPr6Z> - $6.99
 
-.. _4GB SD Card (class 10 speeds are needed for OS operability) $2.49: https://www.newegg.com/Product/Product.aspx?Item=9SIA6NC5CC2119&ignorebbr=1&nm_mc=KNC-GoogleMKP-PC&cm_mmc=KNC-GoogleMKP-PC-_-pla-_-Memory+%28Flash+Memory%29-_-9SIA6NC5CC2119&gclid=Cj0KEQjw0IvIBRDF0Yzq4qGE4IwBEiQATMQlMQhSEr8pf6-Yb8otvqncwqoa5_r9YIP59DElH3ynFrAaAtl58P8HAQ&gclsrc=aw.ds
+`4GB SD Card (class 10 speeds are needed for OS operability) <https://www.newegg.com/Product/Product.aspx?Item=9SIA6NC5CC2119&ignorebbr=1&nm_mc=KNC-GoogleMKP-PC&cm_mmc=KNC-GoogleMKP-PC-_-pla-_-Memory+%28Flash+Memory%29-_-9SIA6NC5CC2119&gclid=Cj0KEQjw0IvIBRDF0Yzq4qGE4IwBEiQATMQlMQhSEr8pf6-Yb8otvqncwqoa5_r9YIP59DElH3ynFrAaAtl58P8HAQ&gclsrc=aw.ds> - $2.49
 
-.. _ AC-DC converter/ Power Regulator $3.00: http://www.hlktech.net/product_detail.php?ProId=60
+`AC-DC converter/ Power Regulator <http://www.hlktech.net/product_detail.php?ProId=60> - $3.00
 
-.. _Plug-in Enclosure $5.17: https://www.polycase.com/gs-2415
+`Plug-in Enclosure <https://www.polycase.com/gs-2415> - $5.17
 
-.. _Keyes Flame Detection Sensor Module for Arduino $2.66: http://www.dx.com/p/arduino-flame-detection-sensor-module-135038#.WQQEg9LythE
+`Keyes Flame Detection Sensor Module for Arduino <http://www.dx.com/p/arduino-flame-detection-sensor-module-135038#.WQQEg9LythE> - $2.66
 
-.. _KEYES DHT11 Digital Temperature Humidity Sensor Module for Arduino $1.59: http://www.gearbest.com/sensors/pp_218522.html
+`KEYES DHT11 Digital Temperature Humidity Sensor Module for Arduino <http://www.gearbest.com/sensors/pp_218522.html> - $1.59
 
 Total prototype parts cost: $21.90
