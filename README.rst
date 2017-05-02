@@ -24,7 +24,7 @@ provide users with granularly accurate yet highly encompasing wildfire informati
 .. raw:: html
 
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/89fEaPE4wlw?rel=0&amp;showinfo=0" frameborder="0"      allowfullscreen></iframe>
+        <iframe src="//www.youtube.com/embed/89fEaPE4wlw" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
 .. contents:: **Table of Contents**
