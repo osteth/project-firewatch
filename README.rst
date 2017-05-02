@@ -42,6 +42,7 @@ Then install in locally editable (``-e``) mode and run the tests.
 
     pip install -e .[test]
     py.test
+	#tests arent yet written and will fail.
 
 Finally, give the command line program a try.
 
