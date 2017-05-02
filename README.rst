@@ -2,11 +2,7 @@ project-firewatch
 ======
 
 Team Members:
-Dutch
-Seth Wahle
-Thuy Pham
-Nick Hershey
-Jason Cuneo
+Dutch, Seth Wahle, Thuy Pham, Nick Hershey, Jason Cuneo
 
 .. image:: https://travis-ci.org/osteth/project-firewatch.svg
    :target: https://travis-ci.org/osteth/project-firewatch
@@ -51,8 +47,9 @@ Finally, give the command line program a try.
 
 .. code-block:: console
 
-    project-firewatch --help
-    project-firewatch 4
+    projectfirewatch --help
+    projectfirewatch update
+	projectfirewatch start
 
 Sensors
 -------------------

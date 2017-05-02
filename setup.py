@@ -21,7 +21,11 @@ setup(name='project-firewatch',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          'click'
+          'click',
+		  'flask',
+		  'flask_api',
+		  'flask_googlemaps',
+		  'wget'
       ],
       extras_require={
           'test': ['pytest'],
