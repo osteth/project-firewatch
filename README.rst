@@ -21,6 +21,9 @@ provide users with granularly accurate yet highly encompasing wildfire informati
    
 .. image:: http://i.imgur.com/7tC5Ea5.png
 
+.. raw:: html 
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/89fEaPE4wlw?rel=0&amp;showinfo=0" frameborder="0"      allowfullscreen></iframe>
+
 .. contents:: **Table of Contents**
   :backlinks: none
 
