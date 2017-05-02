@@ -53,6 +53,9 @@ Finally, give the command line program a try.
 	
 API
 --------------------
+
+Data Explaination
+====================
 +----------+----------------------+-----------------+
 |Attribute |	Short Description | Long Description|
 |Latitude  |Latitude |Center of 1km fire pixel but not necessarily the actual location of the fire as one or more fires can be detected within the 1km pixel.|
@@ -69,6 +72,11 @@ API
 |FRP       |Fire Radiative Power |Depicts the pixel-integrated fire radiative power in MW (megawatts).|
 |DayNight  |Day / Night | D = Daytime, N = Nighttime|
 +----------+------------+---------------------------+
+
+Requests
+====================
+
+
 Sensors
 -------------------
 We put together prototype hardware sensors for the competeition that anyone can build and contribute their crowdsource Fire data back to our database via the Project-Firewatch API.
