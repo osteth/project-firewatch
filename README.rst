@@ -14,9 +14,9 @@ Jason Cuneo
 .. image:: https://coveralls.io/repos/mapbox/project-firewatch/badge.png
    :target: https://coveralls.io/r/mapbox/project-firewatch
 
-NASA Space Apps Challenge Submission for the `And YOU can Help Fight Fires! <https://2017.spaceappschallenge.org/challenges/warning-danger-ahead/and-you-can-help-fight-fires/details>` challenge.
+NASA Space Apps Challenge Submission for the `And YOU can Help Fight Fires! <https://2017.spaceappschallenge.org/challenges/warning-danger-ahead/and-you-can-help-fight-fires/details>`_ challenge.
 
-Project-Firewatch integrates crowd sourced low cost hardware fire monitors with `Fire Information for Resource Management System (FIRMS) <https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms>` from the MODIS satelite to 
+Project-Firewatch integrates crowd sourced low cost hardware fire monitors with `Fire Information for Resource Management System (FIRMS) <https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms>`_ from the MODIS satelite to 
 provide users with granularly accurate yet highly encompasing wildfire information that is easily accessable.
    
 .. image:: http://i.imgur.com/7tC5Ea5.png
@@ -58,16 +58,16 @@ We put together prototype hardware sensors for the competeition that anyone can 
 
 .. image:: http://i.imgur.com/35RY8X0.jpg
 
-`Orange pi zero <https://www.aliexpress.com/store/product/New-Orange-Pi-Zero-H2-Quad-Core-Open-source-development-board-beyond-Raspberry-Pi/1553371_32760774493.html?spm=2114.12010108.0.0.RDPr6Z>` - $6.99
+`Orange pi zero <https://www.aliexpress.com/store/product/New-Orange-Pi-Zero-H2-Quad-Core-Open-source-development-board-beyond-Raspberry-Pi/1553371_32760774493.html?spm=2114.12010108.0.0.RDPr6Z>`_ - $6.99
 
-`4GB SD Card (class 10 speeds are needed for OS operability) <https://www.newegg.com/Product/Product.aspx?Item=9SIA6NC5CC2119&ignorebbr=1&nm_mc=KNC-GoogleMKP-PC&cm_mmc=KNC-GoogleMKP-PC-_-pla-_-Memory+%28Flash+Memory%29-_-9SIA6NC5CC2119&gclid=Cj0KEQjw0IvIBRDF0Yzq4qGE4IwBEiQATMQlMQhSEr8pf6-Yb8otvqncwqoa5_r9YIP59DElH3ynFrAaAtl58P8HAQ&gclsrc=aw.ds>` - $2.49
+`4GB SD Card (class 10 speeds are needed for OS operability) <https://www.newegg.com/Product/Product.aspx?Item=9SIA6NC5CC2119&ignorebbr=1&nm_mc=KNC-GoogleMKP-PC&cm_mmc=KNC-GoogleMKP-PC-_-pla-_-Memory+%28Flash+Memory%29-_-9SIA6NC5CC2119&gclid=Cj0KEQjw0IvIBRDF0Yzq4qGE4IwBEiQATMQlMQhSEr8pf6-Yb8otvqncwqoa5_r9YIP59DElH3ynFrAaAtl58P8HAQ&gclsrc=aw.ds>`_ - $2.49
 
-`AC-DC converter/ Power Regulator <http://www.hlktech.net/product_detail.php?ProId=60>` - $3.00
+`AC-DC converter/ Power Regulator <http://www.hlktech.net/product_detail.php?ProId=60>`_ - $3.00
 
-`Plug-in Enclosure <https://www.polycase.com/gs-2415>` - $5.17
+`Plug-in Enclosure <https://www.polycase.com/gs-2415>`_ - $5.17
 
-`Keyes Flame Detection Sensor Module for Arduino <http://www.dx.com/p/arduino-flame-detection-sensor-module-135038#.WQQEg9LythE>` - $2.66
+`Keyes Flame Detection Sensor Module for Arduino <http://www.dx.com/p/arduino-flame-detection-sensor-module-135038#.WQQEg9LythE>`_ - $2.66
 
-`KEYES DHT11 Digital Temperature Humidity Sensor Module for Arduino <http://www.gearbest.com/sensors/pp_218522.html>` - $1.59
+`KEYES DHT11 Digital Temperature Humidity Sensor Module for Arduino <http://www.gearbest.com/sensors/pp_218522.html>`_ - $1.59
 
 Total prototype parts cost: $21.90
