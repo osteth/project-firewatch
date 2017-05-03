@@ -51,6 +51,8 @@ def update(input, output):
 @click.command(help='Start/Stop the mapping and API server.')
 def start():
 	app.run(host='0.0.0.0',port=port,debug=debug, use_reloader=reload)
+	
+	return('Server Started')
 
 cli.add_command(update)
 cli.add_command(start)
