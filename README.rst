@@ -2,7 +2,7 @@ project-firewatch
 ===================
 
 Team Members:
-Dutch, Seth Wahle, Thuy Pham, Nick Hershey, Jason Cuneo
+Dutch osbourne, Seth Wahle, Thuy Pham, Nick Hershey, Jason Cuneo
 
 .. image:: https://travis-ci.org/osteth/project-firewatch.svg
    :target: https://travis-ci.org/osteth/project-firewatch
@@ -57,11 +57,38 @@ Finally, give the command line program a try.
 .. code-block:: console
 
     projectfirewatch --help
-    projectfirewatch update
+
+
+Command-line Interface
+===========================
+Project Firewatch Includes a Command-line Interface(CLI) to ensure easy use for non-technical personell as well as provide powerfull POSIX compliant
+features needed by experienced systems administrators and highly techincal persons.
+
+Commands
+---------------------------
+.. code-block:: console
+Format:
+projectfirewatch <commads><options><arguments>
+
+	projectfirewatch --help
+
+	projectfirewatch update
+	projectfirewatch start	
 	
-	projectfirewatch start
 	
-	
+CLI Development Roadmap
+--------------------------- 
+- [x] Build Basic CLI functionality.
+- [x] Write fucntion to automaically download MODIS Data.
+- [x] Write funtion to re-format MODIS data into a usable JSON format. 
+- [x] Combine download and format function and add to CLI as update.
+- [x] Improve Error resilience of update function.
+- [x] Integrate API with CLI.
+- [x] Integrate Map with CLI.
+- [ ] add periodic auto update of MODIS data to server function.
+- [ ] Add Daemon functionality to CLI.
+- [ ] make GUI extension??
+
 API
 ==========================
 
@@ -144,11 +171,34 @@ Requests
 |day       |                                   |/api/?onland=True                                                                   |
 +----------+-----------------------------------+------------------------------------------------------------------------------------+
 
+API Development Roadmap
+--------------------------
+- [x] Get basic FlaskAPI functionality working.
+- [x] Get pretty FlaskAPI markdown displayer working.
+- [x] Figure out how to get MODIS data and.
+- [x] Pull in MODIS data from flat file.	
+- [x] Allow user to dump all MODIS data at request. 
+- [x] 
 
 Map
 ==========================
+The map displays all known satellite discovered wildfires as well as the location and status of all active sensors. 
 
+.. image:: https://i.imgur.com/RQYuLHp.png
+.. image:: https://i.imgur.com/1v6zC9t.png
 
+Map Development Roadmap
+--------------------------
+- [x] Basic Map Functionality.
+- [x] Display a pin and circle.
+- [x] figure out radius expansion algorithm to accuratly display MODIS satellite data.
+- [x] Display mock sensor data. 
+- [x] Integrate with CLI. 
+- [ ] Get Map to display all MODIS fire Data .
+- [ ] Migrate from flat file to DB.
+- [ ] Display all live sensor data. 
+- [ ] Allow user to specify a focus location.
+- [ ] Attempt to pull cell phone GPS location and use it as users locaion.
 
 
 Sensors
@@ -160,6 +210,9 @@ We put together prototype hardware sensors for the competition that anyone can b
 .. image:: http://i.imgur.com/JxMAmRT.jpg
 
 .. image:: http://i.imgur.com/35RY8X0.jpg
+
+Bill of Materials
+-------------------------
 
 `Orange pi zero <https://www.aliexpress.com/store/product/New-Orange-Pi-Zero-H2-Quad-Core-Open-source-development-board-beyond-Raspberry-Pi/1553371_32760774493.html?spm=2114.12010108.0.0.RDPr6Z>`_ - $6.99
 
@@ -174,3 +227,7 @@ We put together prototype hardware sensors for the competition that anyone can b
 `KEYES DHT11 Digital Temperature Humidity Sensor Module for Arduino <http://www.gearbest.com/sensors/pp_218522.html>`_ - $1.59
 
 Total prototype parts cost: $21.90
+
+Operating System
+--------------------------
+for the prototype sensors we utilized the ARMBIAN Orange Pi Zero build available `Here`<https://dl.armbian.com/orangepizero/Ubuntu_xenial_default.7z>

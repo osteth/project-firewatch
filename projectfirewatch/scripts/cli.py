@@ -190,11 +190,11 @@ def fullmap():
             'fill_color': '#FF00FF',
             'fill_opacity': 0.2,
             'center': {
-                'lat': 34.713811,
-                'lng': -86.594352
+                'lat': 34.715709,
+                'lng':  -86.597161
             },
-            'radius': 200,
-            'infobox': "This is a circle"
+            'radius': 100,
+            'infobox': "Active Wildfire Area reported by MODIS satellite"
         }],
         maptype = "TERRAIN",
         zoom="16"
