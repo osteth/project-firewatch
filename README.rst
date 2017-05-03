@@ -49,7 +49,7 @@ Then install in locally editable (``-e``) mode and run the tests.
     pip install -e .[test]
     py.test
 	
-	#tests arent yet written and will fail.
+	#tests aren't yet written and will fail.
 	
 
 Finally, give the command line program a try.
@@ -67,8 +67,9 @@ features needed by experienced systems administrators and highly techincal perso
 Commands
 ---------------------------
 .. code-block:: console
-Format:
-projectfirewatch <commads><options><arguments>
+        
+        Format:
+        projectfirewatch <commads><options><arguments>
 
 	projectfirewatch --help
 
@@ -79,14 +80,14 @@ projectfirewatch <commads><options><arguments>
 CLI Development Roadmap
 --------------------------- 
 - [x] Build Basic CLI functionality.
-- [x] Write fucntion to automaically download MODIS Data.
-- [x] Write funtion to re-format MODIS data into a usable JSON format. 
-- [x] Combine download and format function and add to CLI as update.
+- [x] Write function to automatically download MODIS Data.
+- [x] Write function to re-format MODIS data into a usable JSON format. 
+- [x] Combine download and format function and add to CLI.
 - [x] Improve Error resilience of update function.
 - [x] Integrate API with CLI.
 - [x] Integrate Map with CLI.
 - [ ] Write unit tests.
-- [ ] add periodic auto update of MODIS data to server function.
+- [ ] add a periodic auto-update of MODIS data to server function.
 - [ ] Add Daemon functionality to CLI.
 - [ ] make GUI extension??
 
@@ -178,10 +179,10 @@ API Development Roadmap
 - [x] Get pretty FlaskAPI markdown displayer working.
 - [x] Figure out how to get MODIS data and.
 - [x] Pull in MODIS data from flat file.	
-- [x] Allow user to dump all MODIS data at request. 
+- [x] Allow the user to dump all MODIS data at request. 
 - [ ] Write Unit Tests
-- [ ] Switch over to DB from flat file.
-- [ ] Create specfication for MODIS data queries. 
+- [ ] Switch over to DB from the flat file.
+- [ ] Create a specification for MODIS data queries. 
 - [ ] Expand API to allow for data filtering.
 - [ ] Create Specification for Sensor Data.
 - [ ] Expand API to allow writing of sensor data to DB.
@@ -199,14 +200,14 @@ Map Development Roadmap
 --------------------------
 - [x] Basic Map Functionality.
 - [x] Display a pin and circle.
-- [x] figure out radius expansion algorithm to accuratly display MODIS satellite data.
+- [x] figure out radius expansion algorithm to accurately display MODIS satellite data.
 - [x] Display mock sensor data. 
 - [x] Integrate with CLI. 
-- [ ] Get Map to display all MODIS fire Data .
+- [ ] Get Map to display all MODIS fire Data.
 - [ ] Migrate from flat file to DB.
 - [ ] Display all live sensor data. 
-- [ ] Allow user to specify a focus location.
-- [ ] Attempt to pull cell phone GPS location and use it as users locaion.
+- [ ] Allow the user to specify a focus location.
+- [ ] Attempt to pull cell phone GPS location and use it as users location.
 
 
 Sensors
@@ -219,8 +220,9 @@ We put together prototype hardware sensors for the competition that anyone can b
 
 .. image:: http://i.imgur.com/35RY8X0.jpg
 
+
 Bill of Materials
--------------------------
+-------------------------------
 
 `Orange pi zero <https://www.aliexpress.com/store/product/New-Orange-Pi-Zero-H2-Quad-Core-Open-source-development-board-beyond-Raspberry-Pi/1553371_32760774493.html?spm=2114.12010108.0.0.RDPr6Z>`_ - $6.99
 
@@ -238,4 +240,4 @@ Total prototype parts cost: $21.90
 
 Operating System
 --------------------------
-for the prototype sensors we utilized the ARMBIAN Orange Pi Zero build available `Here`<https://dl.armbian.com/orangepizero/Ubuntu_xenial_default.7z>
+for the prototype sensors, we utilized the ARMBIAN Orange Pi Zero build available `Here <https://dl.armbian.com/orangepizero/Ubuntu_xenial_default.7z>`_
