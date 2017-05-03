@@ -85,6 +85,7 @@ CLI Development Roadmap
 - [x] Improve Error resilience of update function.
 - [x] Integrate API with CLI.
 - [x] Integrate Map with CLI.
+- [ ] Write unit tests.
 - [ ] add periodic auto update of MODIS data to server function.
 - [ ] Add Daemon functionality to CLI.
 - [ ] make GUI extension??
@@ -178,7 +179,14 @@ API Development Roadmap
 - [x] Figure out how to get MODIS data and.
 - [x] Pull in MODIS data from flat file.	
 - [x] Allow user to dump all MODIS data at request. 
-- [x] 
+- [ ] Write Unit Tests
+- [ ] Switch over to DB from flat file.
+- [ ] Create specfication for MODIS data queries. 
+- [ ] Expand API to allow for data filtering.
+- [ ] Create Specification for Sensor Data.
+- [ ] Expand API to allow writing of sensor data to DB.
+- [ ] Expand API to allow querying of sensor data.
+
 
 Map
 ==========================
