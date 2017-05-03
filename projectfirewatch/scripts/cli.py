@@ -9,11 +9,13 @@ import json
 import csv
 import click
 import wget
+import os
 
 port = 5000
 debug = True
 reload = True
-
+path = os.path.realpath(__file__).replace(__file__, '')
+print(path)
 app = FlaskAPI(__name__, template_folder="templates")
 
 # you can set key as config
@@ -32,12 +34,16 @@ def cli(*args, **kwargs):
     pass
 
 @click.command(help='Retrieves MODIS satelite CSV data and coverts data from csv to json.')
-@click.option('--input', '-i', default='MODIS_C6_Global_24h.csv', help='--input , -i	Sets the file that is to be converted')
-@click.option('--output', '-o', default='MODIS_C6_Global_24h.json', help='--output, -o,   Sets the name of the output.')
+@click.option('--input', '-i', default=path + 'MODIS_C6_Global_24h.csv', help='--input , -i	Sets the file that is to be converted')
+@click.option('--output', '-o', default=path + 'MODIS_C6_Global_24h.json', help='--output, -o,   Sets the name of the output.')
 def update(input, output):
-	url = 'https://firms.modaps.eosdis.nasa.gov/active_fire/c6/text/MODIS_C6_Global_24h.csv'
-	filename = wget.download(url)
-
+	try:
+		os.remove(path + 'MODIS_C6_Global_24h.json')
+	except OSError:
+		pass
+	MODISurl = 'https://firms.modaps.eosdis.nasa.gov/active_fire/c6/text/MODIS_C6_Global_24h.csv'	
+	filename = wget.download(MODISurl, path)
+	
 	csvfile = open(input, 'r')
 	jsonfile = open(output, 'w')
 
@@ -45,8 +51,13 @@ def update(input, output):
 	for row in reader:
 		json.dump(row, jsonfile)
 		jsonfile.write('\n')
-		
-	return('MODIS satelite data updated.')
+	
+	try:
+		os.remove(path + 'MODIS_C6_Global_24h.csv')
+	except OSError:
+		pass
+
+	return(filename)
 
 @click.command(help='Start/Stop the mapping and API server.')
 def start():

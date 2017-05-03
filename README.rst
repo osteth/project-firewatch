@@ -10,7 +10,7 @@ Dutch, Seth Wahle, Thuy Pham, Nick Hershey, Jason Cuneo
 .. image:: https://coveralls.io/repos/mapbox/project-firewatch/badge.png
    :target: https://coveralls.io/r/mapbox/project-firewatch
 
-NASA Space Apps Challenge Submission for the `And YOU can Help Fight Fires! <https://2017.spaceappschallenge.org/challenges/warning-danger-ahead/and-you-can-help-fight-fires/details>`_ challenge.
+2017 NASA Space Apps Challenge Submission for the `And YOU can Help Fight Fires! <https://2017.spaceappschallenge.org/challenges/warning-danger-ahead/and-you-can-help-fight-fires/details>`_ challenge.
 
 Project-Firewatch integrates crowdsourced low-cost hardware fire monitors with `Fire Information for Resource Management System (FIRMS) <https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms>`_ from the MODIS satellite to 
 provide users with granularly accurate yet highly encompassing wildfire information that is easily accessible.
@@ -31,6 +31,7 @@ provide users with granularly accurate yet highly encompassing wildfire informat
 .. contents:: **Table of Contents**
   :backlinks: none
 
+
 Quick start
 -------------------------
 
@@ -47,7 +48,9 @@ Then install in locally editable (``-e``) mode and run the tests.
 
     pip install -e .[test]
     py.test
+	
 	#tests arent yet written and will fail.
+	
 
 Finally, give the command line program a try.
 
@@ -55,7 +58,9 @@ Finally, give the command line program a try.
 
     projectfirewatch --help
     projectfirewatch update
+	
 	projectfirewatch start
+	
 	
 API
 ==========================
@@ -104,12 +109,52 @@ Data Explanation
 |DayNight  |Day / Night                        | D = Daytime, N = Nighttime                                                         |
 +----------+-----------------------------------+------------------------------------------------------------------------------------+
 
+
+
 Requests
 ---------------------------
 
+Data Explanation
+--------------------------
++----------+-----------------------------------+------------------------------------------------------------------------------------+
+|requests  |modifiers                          |Long Description                                                                    |
++==========+===================================+====================================================================================+
+|lat       |plus                               |/api/?lat=43.6271&plus=10&minus=10                                                  |
+|          |minus                              |results filteres to a latitude plus and minus a given location.                     |
++----------+-----------------------------------+------------------------------------------------------------------------------------+
+|lon       |plus                               |/api/?lat=43.6271&plus=10&minus=10                                                  |
+|          |minus                              |results filteres to a longitude plus and minus a given location.                    |
++----------+-----------------------------------+------------------------------------------------------------------------------------+
+|scan-min  |                                   |/api/?scan-min=1                                                                    |
++----------|-----------------------------------|------------------------------------------------------------------------------------|
+|scan-max  |                                   |/api/?scan-max=2                                                                    |
++----------+-----------------------------------+------------------------------------------------------------------------------------+
+|track-min |                                   |/api/?track-min=1                                                                   |
++----------+-----------------------------------+------------------------------------------------------------------------------------+
+|track-max |                                   |/api/?track-max=2                                                                   |
++----------+-----------------------------------+------------------------------------------------------------------------------------+
+|date      |end                                |/api/?date=<julian begin date>&end=<julian end date>                                |
++----------+-----------------------------------+------------------------------------------------------------------------------------+
+|time      |until                              |/api/?time=0255&until=2250   (in UTC and military time).                            |
++----------+-----------------------------------+------------------------------------------------------------------------------------+
+|onland    |                                   |/api/?onland=True                                                                   |
++----------+-----------------------------------+------------------------------------------------------------------------------------+
+|confidence|                                   |/api/?confidence=65    (sets minimum confidence of results)                         |
++----------+-----------------------------------+------------------------------------------------------------------------------------+
+|frp       |                                   |/api/?frp=16    (sets minimum power of results in megawatts).                       |
++----------+-----------------------------------+------------------------------------------------------------------------------------+
+|day       |                                   |/api/?onland=True                                                                   |
++----------+-----------------------------------+------------------------------------------------------------------------------------+
+
+
+Map
+==========================
+
+
+
 
 Sensors
--------------------
+==========================
 We put together prototype hardware sensors for the competition that anyone can build and contribute crowdsourced Fire data back to our database via the Project-Firewatch API.
 
 .. image:: http://i.imgur.com/L6rXVhw.jpg
