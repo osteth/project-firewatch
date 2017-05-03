@@ -15,7 +15,7 @@ port = 5000
 debug = True
 reload = True
 path = os.path.realpath(__file__).replace(__file__, '')
-print(path)
+
 app = FlaskAPI(__name__, template_folder="templates")
 
 # you can set key as config
@@ -27,9 +27,12 @@ GoogleMaps(app, key="AIzaSyByCF9JlHWGthilogp3Q-Y1qiNaqRtZ6ZQ")
 #begin CLI  Portion
 @click.group()
 def cli(*args, **kwargs):
-    """Command line utility to easily convert .csv data over to .json data.  This utility was built for the NASA space apps challenge and is defaulted 
-	to be used with cron to pull in data from https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/active-fire-data convert it to json 
-	and load it into a database to overcome the lack of a useable api for this data.
+    """Command line utility to easily convert .csv data over to .json data.
+	This utility was built for the NASA space apps challenge and is defaulted
+	to be used with cron to pull in data from
+	https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/active-fire-data
+	convert it to json and load it into a database to overcome the lack of
+	a useable api for this data.
 	Usage: python3 csv-json.py convert -i <input file path> -o <output file path>"""
     pass
 
@@ -37,33 +40,33 @@ def cli(*args, **kwargs):
 @click.option('--input', '-i', default=path + 'MODIS_C6_Global_24h.csv', help='--input , -i	Sets the file that is to be converted')
 @click.option('--output', '-o', default=path + 'MODIS_C6_Global_24h.json', help='--output, -o,   Sets the name of the output.')
 def update(input, output):
-	try:
-		os.remove(path + 'MODIS_C6_Global_24h.json')
-	except OSError:
-		pass
-	MODISurl = 'https://firms.modaps.eosdis.nasa.gov/active_fire/c6/text/MODIS_C6_Global_24h.csv'	
-	filename = wget.download(MODISurl, path)
-	
-	csvfile = open(input, 'r')
-	jsonfile = open(output, 'w')
+    try:
+        os.remove(path + 'MODIS_C6_Global_24h.json')
+    except OSError:
+        pass
+    MODISurl = 'https://firms.modaps.eosdis.nasa.gov/active_fire/c6/text/MODIS_C6_Global_24h.csv'
+    filename = wget.download(MODISurl, path)
 
-	reader = csv.DictReader( csvfile)
-	for row in reader:
-		json.dump(row, jsonfile)
-		jsonfile.write('\n')
-	
-	try:
-		os.remove(path + 'MODIS_C6_Global_24h.csv')
-	except OSError:
-		pass
+    csvfile = open(input, 'r')
+    jsonfile = open(output, 'w')
 
-	return(filename)
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        json.dump(row, jsonfile)
+        jsonfile.write('\n')
+
+    try:
+        os.remove(path + 'MODIS_C6_Global_24h.csv')
+    except OSError:
+        pass
+
+    return filename
 
 @click.command(help='Start/Stop the mapping and API server.')
 def start():
-	app.run(host='0.0.0.0',port=port,debug=debug, use_reloader=reload)
-	
-	return('Server Started')
+    app.run(host='0.0.0.0', port=port, debug=debug, use_reloader=reload)
+
+    return 'Server Started'
 
 cli.add_command(update)
 cli.add_command(start)
@@ -72,58 +75,60 @@ cli.add_command(start)
 
 #begin Auxiliary Functions
 def LLR():
-	table = []
-	llr_table = []
+    table = []
+    llr_table = []
 
-	with open('MODIS_C6_Global_24h.json', 'r') as data_file:
-		for line in data_file:
-			try:
-				j = line.split('|')[-1]
-				table.append(json.loads(j))
-			except ValueError:
-				print("Bad Json File!")
-				continue
+    with open('MODIS_C6_Global_24h.json', 'r') as data_file:
+        for line in data_file:
+            try:
+                j = line.split('|')[-1]
+                table.append(json.loads(j))
+            except ValueError:
+                print("Bad Json File!")
+                continue
 
-	for row in table:
-		lon = float(row['longitude'])
-		lat = float(row['latitude'])
-		scan = row['scan']
-		track = row['track']
-		radius = (float(scan) * float(track) / 2) * 750 #kilometers
-		radius = round(radius, 2) #round to two decimal places
-		stroke_color = "FF0000"
-		fill_color = "FF0000"
-		llr_table.append({
-		'center': {'longitude': lon,
-		'latitude': lat},
-		'radius': radius,
-		'infobox': 'Activate Fire Area as reported'})
-	return(llr_table)
-	
+    for row in table:
+        lon = float(row['longitude'])
+        lat = float(row['latitude'])
+        scan = row['scan']
+        track = row['track']
+        radius = (float(scan) * float(track) / 2) * 750 #kilometers
+        radius = round(radius, 2) #round to two decimal places
+        stroke_color = "FF0000"
+        fill_color = "FF0000"
+
+        llr_table.append([{
+        'center': {'longitude': lon,
+        'latitude': lat},
+        'radius': radius,
+        'infobox': 'Activate Fire Area as reported'}])
+    return llr_table
+
+
 #End Auxilary Functions
 
 #Begin API
 @app.route("/api/", methods=['GET', 'POST'])
 def Dump_sat():
-	'''
-	dumps all MODIS data in JSON format.
-	'''
+    '''
+    dumps all MODIS data in JSON format.
+    '''
 
-	SatDataTable = []
+    SatDataTable = []
 
-	with open('MODIS_C6_Global_24h.json', 'r') as SatData:
-		for line in SatData:
-			try:
-				j = line.split('|')[-1]
-				SatDataTable.append(json.loads(j))
-			except ValueError:
-				print("Bad Json File!")
-				continue
+    with open('MODIS_C6_Global_24h.json', 'r') as SatData:
+        for line in SatData:
+            try:
+                j = line.split('|')[-1]
+                SatDataTable.append(json.loads(j))
+            except ValueError:
+                print("Bad Json File!")
+                continue
 
 
-	return {"Satellite Data": SatDataTable}
+    return {"Satellite Data": SatDataTable}
 
-	
+
 #End API
 
 #Bgin Map
@@ -187,22 +192,24 @@ def fullmap():
                 'infobox': "Sensor: 7, Temp: 86, humidity: 46% ALERT: False"
             }
         ],
-        circles=[{
-            'stroke_color': '#FF00FF',
-            'stroke_opacity': 1.0,
-            'stroke_weight': 7,
-            'fill_color': '#FF00FF',
-            'fill_opacity': 0.2,
-            'center': {
-                'lat': 34.715709,
-                'lng':  -86.597161
-            },
-            'radius': 100,
-            'infobox': "Active Wildfire Area reported by MODIS satellite"
-        }],
-        maptype = "TERRAIN",
+        # circles=[{
+            # 'stroke_color': '#FF00FF',
+            # 'stroke_opacity': 1.0,
+            # 'stroke_weight': 7,
+            # 'fill_color': '#FF00FF',
+            # 'fill_opacity': 0.2,
+            # 'center': {
+                # 'lat': 34.715709,
+                # 'lng':  -86.597161
+            # },
+            # 'radius': 100,
+            # 'infobox': "Active Wildfire Area reported by MODIS satellite"
+        # }],\
+        circles=firedata,
+        maptype="TERRAIN",
         zoom="16"
     )
+    print(circles)
     return render_template('example_fullmap.html', fullmap=fullmap)
 
 #End Map

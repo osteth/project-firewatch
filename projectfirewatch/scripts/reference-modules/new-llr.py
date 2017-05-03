@@ -25,11 +25,13 @@ def LLR():
 		radius = round(radius, 2) #round to two decimal places
 		stroke_color = "FF0000"
 		fill_color = "FF0000"
-		llr_table.append({
+		llr_table.append([
+		'stroke_color' : stroke_color,
+		'fill_color' : fill_color,
 		'center': {'longitude': lon,
 		'latitude': lat},
 		'radius': radius,
-		'infobox': 'Activate Fire Area as reported'})
+		'infobox': 'Activate Fire Area as reported'])
 	return(llr_table)
 
 
