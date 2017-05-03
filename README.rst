@@ -35,12 +35,11 @@ provide users with granularly accurate yet highly encompassing wildfire informat
 Quick start
 -------------------------
 
-To use project-firewatch as the start of a new project, do the following, preferably in
-a virtual environment. Clone the repo.
+To set up a project-firewatch server, do the following.
 
 .. code-block:: console
 
-    https://github.com/osteth/project-firewatch.git
+    git clone https://github.com/osteth/project-firewatch.git
 
 Then install in locally editable (``-e``) mode and run the tests.
 
@@ -49,7 +48,7 @@ Then install in locally editable (``-e``) mode and run the tests.
     pip install -e .[test]
     py.test
 	
-	#tests aren't yet written and will fail.
+	#tests aren't yet written and may fail.
 	
 
 Finally, give the command line program a try.
@@ -94,8 +93,8 @@ CLI Development Roadmap
 API
 ==========================
 
-Data Explanation
---------------------------
+MODIS Satellite Data Explanation
+-------------------------------------
 +----------+-----------------------------------+------------------------------------------------------------------------------------+
 |Attribute |Short Description                  |Long Description                                                                    |
 +==========+===================================+====================================================================================+
@@ -236,8 +235,30 @@ Bill of Materials
 
 `KEYES DHT11 Digital Temperature Humidity Sensor Module for Arduino <http://www.gearbest.com/sensors/pp_218522.html>`_ - $1.59
 
-Total prototype parts cost: $21.90
+*Total prototype parts cost: $21.90*
 
 Operating System
 --------------------------
 for the prototype sensors, we utilized the ARMBIAN Orange Pi Zero build available `Here <https://dl.armbian.com/orangepizero/Ubuntu_xenial_default.7z>`_
+
+Sensor Development Roadmap
+----------------------------
+- [x] Build micro processor version using low cost readily available modules. 
+- [x] Get basic computing functions working.
+- [ ] Connect sensors and get sensor data.
+- [ ] Figure out how to send sensor data to API.
+- [ ] Write client side application to gather and send data to API.
+- [ ] Refactor to lower cost micro-controller (possibly arduino nano).
+- [ ] write micro controller firmware.
+- [ ] Impelment a battery.
+- [ ] Design custom PCB.
+- [ ] V1 sesor test build.
+- [ ] V1 user trials.
+- [ ] Design Enclosure.
+- [ ] Enclosure fit test. 
+- [ ] Develop automated testing fixturing and software for manufacturing.
+- [ ] Enumerate Q/A standards. 
+- [ ] Get contract manufacturing quotes.
+- [ ] Deliver Build Documents and equiptment to Contract Manufacturer. 
+- [ ] Develop packaging, and product ancelaries.
+- [ ] Poduct launch, sales, and delivery.  

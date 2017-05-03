@@ -97,12 +97,10 @@ def LLR():
         stroke_color = "FF0000"
         fill_color = "FF0000"
 
-        llr_table.append([{
-        'center': {'longitude': lon,
-        'latitude': lat},
-        'radius': radius,
-        'infobox': 'Activate Fire Area as reported'}])
+        llr_table.append([lat,lon,radius])
+        
     return llr_table
+
 
 
 #End Auxilary Functions
@@ -146,8 +144,8 @@ def fullmap():
             "position:absolute;"
             "z-index:200;"
         ),
-        lat=34.715820,
-        lng=-86.597105,
+        lat=34.715709,
+        lng=-86.597161,
         markers=[
             {
                 'icon': '//maps.google.com/mapfiles/ms/icons/blue-dot.png',
@@ -192,24 +190,22 @@ def fullmap():
                 'infobox': "Sensor: 7, Temp: 86, humidity: 46% ALERT: False"
             }
         ],
-        # circles=[{
-            # 'stroke_color': '#FF00FF',
-            # 'stroke_opacity': 1.0,
-            # 'stroke_weight': 7,
-            # 'fill_color': '#FF00FF',
-            # 'fill_opacity': 0.2,
-            # 'center': {
-                # 'lat': 34.715709,
-                # 'lng':  -86.597161
-            # },
-            # 'radius': 100,
-            # 'infobox': "Active Wildfire Area reported by MODIS satellite"
-        # }],\
-        circles=firedata,
+        circles=[{
+            'stroke_color': '#FF00FF',
+            'stroke_opacity': 1.0,
+            'stroke_weight': 7,
+            'fill_color': '#FF00FF',
+            'fill_opacity': 0.2,
+            'center': {
+                'lat': 34.715709,
+                'lng':  -86.597161
+            },
+            'radius': 100,
+            'infobox': "Active Wildfire Area reported by MODIS satellite"
+        }] + firedata,
         maptype="TERRAIN",
-        zoom="16"
+        zoom="4"
     )
-    print(circles)
     return render_template('example_fullmap.html', fullmap=fullmap)
 
 #End Map
