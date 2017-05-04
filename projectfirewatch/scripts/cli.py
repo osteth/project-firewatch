@@ -77,6 +77,7 @@ cli.add_command(start)
 def LLR():
     table = []
     llr_table = []
+    count = 0
 
     with open('MODIS_C6_Global_24h.json', 'r') as data_file:
         for line in data_file:
@@ -86,18 +87,19 @@ def LLR():
             except ValueError:
                 print("Bad Json File!")
                 continue
-
+			
     for row in table:
-        lon = float(row['longitude'])
-        lat = float(row['latitude'])
-        scan = row['scan']
-        track = row['track']
-        radius = (float(scan) * float(track) / 2) * 750 #kilometers
-        radius = round(radius, 2) #round to two decimal places
-        stroke_color = "FF0000"
-        fill_color = "FF0000"
-
-        llr_table.append([lat,lon,radius])
+        if count < 100:
+            lon = float(row['longitude'])
+            lat = float(row['latitude'])
+            scan = row['scan']
+            track = row['track']
+            radius = (float(scan) * float(track) / 2) * 750 #kilometers
+            radius = round(radius, 2) #round to two decimal places
+            stroke_color = "FF0000"
+            fill_color = "FF0000"
+            llr_table.append([lat,lon,radius])
+            count = count + 1
         
     return llr_table
 
@@ -144,8 +146,8 @@ def fullmap():
             "position:absolute;"
             "z-index:200;"
         ),
-        lat=34.715709,
-        lng=-86.597161,
+        lat=-30.197,
+        lng=153.14,
         markers=[
             {
                 'icon': '//maps.google.com/mapfiles/ms/icons/blue-dot.png',
@@ -190,19 +192,7 @@ def fullmap():
                 'infobox': "Sensor: 7, Temp: 86, humidity: 46% ALERT: False"
             }
         ],
-        circles=[{
-            'stroke_color': '#FF00FF',
-            'stroke_opacity': 1.0,
-            'stroke_weight': 7,
-            'fill_color': '#FF00FF',
-            'fill_opacity': 0.2,
-            'center': {
-                'lat': 34.715709,
-                'lng':  -86.597161
-            },
-            'radius': 100,
-            'infobox': "Active Wildfire Area reported by MODIS satellite"
-        }] + firedata,
+        circles=firedata,
         maptype="TERRAIN",
         zoom="4"
     )
