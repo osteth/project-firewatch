@@ -5,12 +5,13 @@ from flask_api import FlaskAPI, status, exceptions
 from flask import Flask, render_template
 from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map, icons
-import json
-import csv
-import click
-import wget
-import os
+from flask_socketio import SocketIO, emit
+import json, csv, click, wget, os, time
 
+upper = 50.092814
+lower = 21.821317
+left =  -127.643116
+right =-62.428271
 port = 5000
 debug = True
 reload = True
@@ -89,7 +90,6 @@ def LLR():
                 continue
 			
     for row in table:
-        if count < 100:
             lon = float(row['longitude'])
             lat = float(row['latitude'])
             scan = row['scan']
@@ -98,9 +98,10 @@ def LLR():
             radius = round(radius, 2) #round to two decimal places
             stroke_color = "FF0000"
             fill_color = "FF0000"
-            llr_table.append([lat,lon,radius])
-            count = count + 1
-        
+            if count < 3240 and lat < upper and lat > lower and lon > left and lon < right:
+                llr_table.append([lat,lon,radius])
+                count = count + 1
+			
     return llr_table
 
 
@@ -146,8 +147,8 @@ def fullmap():
             "position:absolute;"
             "z-index:200;"
         ),
-        lat=-30.197,
-        lng=153.14,
+        lat=41.111882,
+        lng=-95.829190,
         markers=[
             {
                 'icon': '//maps.google.com/mapfiles/ms/icons/blue-dot.png',
