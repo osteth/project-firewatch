@@ -154,14 +154,12 @@ def Dump_sat():
 @app.route('/')
 def fullmap():
     global lat, lng, left, right, upper, lower
-    ip = '108.209.71.76'
+    ip = request.remote_addr
     lat, lng = geoip_coords(ip)
     upper = lat + 25.0
     right = lng + 25.0
     lower = lat - 25.0
     left = lng - 25.0
-    
-    print upper, lower, left, right
     firedata = LLR()
     fullmap = Map(
         identifier="fullmap",
