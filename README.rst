@@ -214,11 +214,11 @@ Satellite Information allows the user to get a broad picture of where the fire i
 
 Project Firewatch located user's location and automatically focus the map for ease of use. 
 
-.. image:: https://i.imgur.com/UwEpmKT.png
+.. image:: https://i.imgur.com/xVVpJKH.png
 
 showing 25-degree bounding box size.
 
-.. image:: https://i.imgur.com/IwsUOVH.png
+.. image:: https://i.imgur.com/K38p6m1.png
 
 
 
