@@ -2,31 +2,30 @@ project-firewatch
 ===================
 
 Team Members:
-Dutch osbourne, Seth Wahle, Thuy Pham, Nick Hershey, Jason Cuneo
+Dutch osbourne, `Seth Wahle <http://sethwahle.com>`_, Thuy Pham, Nick Hershey, Jason Cuneo
 
 .. image:: https://travis-ci.org/osteth/project-firewatch.svg
    :target: https://travis-ci.org/osteth/project-firewatch
 
-.. image:: https://coveralls.io/repos/mapbox/project-firewatch/badge.png
-   :target: https://coveralls.io/r/mapbox/project-firewatch
+.. image:: https://coveralls.io/repos/osteth/project-firewatch/badge.png
+   :target: https://coveralls.io/r/osteth/project-firewatch
 
 2017 NASA Space Apps Challenge Submission for the `And YOU can Help Fight Fires! <https://2017.spaceappschallenge.org/challenges/warning-danger-ahead/and-you-can-help-fight-fires/details>`_ challenge.
 
+`See the Teams submission page for project updates! <https://2017.spaceappschallenge.org/challenges/warning-danger-ahead/and-you-can-help-fight-fires/teams/hackbama-project-firewatch/project>`_
+
+`Sign up here for Wildfire email updates! <https://firms.modaps.eosdis.nasa.gov/alerts/>`_
+
 Project-Firewatch integrates crowdsourced low-cost hardware fire monitors with `Fire Information for Resource Management System (FIRMS) <https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms>`_ from the MODIS satellite to 
 provide users with granularly accurate yet highly encompassing wildfire information that is easily accessible.
+
+`Access the Project-Firewatch Wildfire Map Here! <http://108.61.193.161:5000/>`_
+
+`Access the Project-Firewatch API Here! <http://108.61.193.161:5000/api/>`_
+
+Demo sites may take a moment to load, the server is not powerful and the project still needs a lot of optimization work. 
    
 .. image:: http://i.imgur.com/7tC5Ea5.png
-
-.. raw:: html
-
-    <embed>
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="//www.youtube.com/embed/89fEaPE4wlw" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; 
-        width: 100%; height: 100%;"></iframe>
-    </div>
-    </embed>
-
-
 
 .. contents:: **Table of Contents**
   :backlinks: none
@@ -79,8 +78,8 @@ Commands
 CLI Development Roadmap
 --------------------------- 
 - [x] Build Basic CLI functionality.
-- [x] Write function to automatically download MODIS Data.
-- [x] Write function to re-format MODIS data into a usable JSON format. 
+- [x] Write a function to automatically download MODIS Data.
+- [x] Write a function to re-format MODIS data into a usable JSON format. 
 - [x] Combine download and format function and add to CLI.
 - [x] Improve Error resilience of update function.
 - [x] Integrate API with CLI.
@@ -179,7 +178,7 @@ API Development Roadmap
 - [x] Figure out how to get MODIS data and.
 - [x] Pull in MODIS data from flat file.	
 - [x] Allow the user to dump all MODIS data at request. 
-- [ ] collaborate with datasource provider to better offer data to the community. 
+- [ ] collaborate with data source provider to better offer data to the community. 
 - [ ] Write Unit Tests
 - [ ] Switch over to DB from the flat file.
 - [ ] Create a specification for MODIS data queries. 
@@ -193,9 +192,31 @@ Map
 ==========================
 The map displays all known satellite discovered wildfires as well as the location and status of all active sensors. 
 
+Map Limitations
+---------------------------
+Due to technical Limitations, we are attempting to overcome the map can only display a maximum of 3240 points. 
+To mitigate the effects of this limitation, we use GeoIP information to automatically locate the user and only plot fires within 25 degrees in all directions of the user.
+Additionally, a green marker is dropped were the program believes the user is located and the map automatically focuses on the user's location. 
+
+Map Features
+------------------------------
+Displays Semi-Realtime MODIS Satellite gathered wildfire Information.
 .. image:: https://i.imgur.com/RQYuLHp.png
+
+Displays Status and information about custom fire sensors.
 .. image:: https://i.imgur.com/1v6zC9t.png
+
+Satellite Information allows the user to get a broad picture of where the fire is located.
 .. image:: http://i.imgur.com/rY0eS3S.png
+
+Project Firewatch located user's location and automatically focus the map for ease of use. 
+.. image:: https://i.imgur.com/UwEpmKT.png
+
+showing 25-degree bounding box size.
+.. image:: https://i.imgur.com/IwsUOVH.png
+
+
+
 Map Development Roadmap
 --------------------------
 - [x] Basic Map Functionality.
@@ -245,22 +266,22 @@ for the prototype sensors, we utilized the ARMBIAN Orange Pi Zero build availabl
 
 Sensor Development Roadmap
 ----------------------------
-- [x] Build micro processor version using low cost readily available modules. 
+- [x] Build microprocessor version using low cost readily available modules. 
 - [x] Get basic computing functions working.
 - [ ] Connect sensors and get sensor data.
 - [ ] Figure out how to send sensor data to API.
-- [ ] Write client side application to gather and send data to API.
-- [ ] Refactor to lower cost micro-controller (possibly arduino nano).
-- [ ] write micro controller firmware.
-- [ ] Impelment a battery.
+- [ ] Write the client-side application to gather and send data to API.
+- [ ] Refactor to lower cost micro-controller (possibly Arduino nano).
+- [ ] write microcontroller firmware.
+- [ ] Implement a battery.
 - [ ] Design custom PCB.
-- [ ] V1 sesor test build.
+- [ ] V1 sensor test build.
 - [ ] V1 user trials.
 - [ ] Design Enclosure.
-- [ ] Enclosure fit test. 
+- [ ] Enclosure fittest. 
 - [ ] Develop automated testing fixturing and software for manufacturing.
 - [ ] Enumerate Q/A standards. 
 - [ ] Get contract manufacturing quotes.
-- [ ] Deliver Build Documents and equiptment to Contract Manufacturer. 
-- [ ] Develop packaging, and product ancelaries.
-- [ ] Poduct launch, sales, and delivery.  
+- [ ] Deliver Build Documents and equipment to Contract Manufacturer. 
+- [ ] Develop packaging and product ancillaries.
+- [ ] Product launch, sales, and delivery.  
