@@ -179,6 +179,7 @@ API Development Roadmap
 - [x] Figure out how to get MODIS data and.
 - [x] Pull in MODIS data from flat file.	
 - [x] Allow the user to dump all MODIS data at request. 
+- [ ] collaborate with datasource provider to better offer data to the community. 
 - [ ] Write Unit Tests
 - [ ] Switch over to DB from the flat file.
 - [ ] Create a specification for MODIS data queries. 
@@ -194,7 +195,7 @@ The map displays all known satellite discovered wildfires as well as the locatio
 
 .. image:: https://i.imgur.com/RQYuLHp.png
 .. image:: https://i.imgur.com/1v6zC9t.png
-
+.. image:: http://i.imgur.com/rY0eS3S.png
 Map Development Roadmap
 --------------------------
 - [x] Basic Map Functionality.
@@ -202,6 +203,7 @@ Map Development Roadmap
 - [x] figure out radius expansion algorithm to accurately display MODIS satellite data.
 - [x] Display mock sensor data. 
 - [x] Integrate with CLI. 
+- [x] Get coordinates of user and autofocus map accordingly.
 - [ ] Get Map to display all MODIS fire Data.
 - [ ] Migrate from flat file to DB.
 - [ ] Display all live sensor data. 

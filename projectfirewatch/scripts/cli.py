@@ -5,16 +5,12 @@ from flask_api import FlaskAPI, status, exceptions
 from flask import Flask, render_template
 from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map, icons
-from flask_socketio import SocketIO, emit
-import json, csv, click, wget, os, time
+import json, csv, click, wget, os, time, requests
 
-upper = 50.092814
-lower = 21.821317
-left =  -127.643116
-right =-62.428271
 port = 5000
 debug = True
 reload = True
+
 path = os.path.realpath(__file__).replace(__file__, '')
 
 app = FlaskAPI(__name__, template_folder="templates")
@@ -104,7 +100,29 @@ def LLR():
 			
     return llr_table
 
+	
+def get_ip():
+	'''finds the useres IP address and returns it.'''
+	ipdata = requests.get('http://jsonip.com/')
+	ipresp = ipdata.json()
+	ip = ipresp.get('ip')
+	return ip
 
+
+def geoip(ip):
+	'''retireves and reports users geoip information'''
+	resp = requests.get('http://freegeoip.net/json/' + ip)
+	data = resp.json()
+	return(data)
+
+def geoip_coords(ip):
+    '''retrieves and reports users geoip infromations limited down to 
+	location coordinates only'''
+    resp = requests.get('http://freegeoip.net/json/' + ip)
+    data = resp.json()
+    lat = data.get('latitude')
+    lng = data.get('longitude')
+    return(lat,lng)
 
 #End Auxilary Functions
 
@@ -135,6 +153,15 @@ def Dump_sat():
 #Bgin Map
 @app.route('/')
 def fullmap():
+    global lat, lng, left, right, upper, lower
+    ip = '108.209.71.76'
+    lat, lng = geoip_coords(ip)
+    upper = lat + 25.0
+    right = lng + 25.0
+    lower = lat - 25.0
+    left = lng - 25.0
+    
+    print upper, lower, left, right
     firedata = LLR()
     fullmap = Map(
         identifier="fullmap",
@@ -147,14 +174,14 @@ def fullmap():
             "position:absolute;"
             "z-index:200;"
         ),
-        lat=41.111882,
-        lng=-95.829190,
+        lat= lat,
+        lng= lng,
         markers=[
             {
-                'icon': '//maps.google.com/mapfiles/ms/icons/blue-dot.png',
-                'lat': 34.716769,
-                'lng': -86.597240,
-                'infobox': "Sensor: 1, Temp: 86, humidity: 46% ALERT: False"
+                'icon': '//maps.google.com/mapfiles/ms/icons/green-dot.png',
+                'lat': lat,
+                'lng': lng,
+                'infobox': "location of user at IP: " + ip
             },
             {
                 'icon': '//maps.google.com/mapfiles/ms/icons/blue-dot.png',
@@ -193,9 +220,22 @@ def fullmap():
                 'infobox': "Sensor: 7, Temp: 86, humidity: 46% ALERT: False"
             }
         ],
+		rectangle = {
+            'stroke_color': '#4286f4',
+            'stroke_opacity': 1,
+            'stroke_weight': 25,
+            'fill_color': '#4286f4',
+            'fill_opacity': 1,
+            'bounds': {
+                'north': upper,
+                'south': lower,
+                'east': right,
+                'west': left
+            }
+        },
         circles=firedata,
         maptype="TERRAIN",
-        zoom="4"
+        zoom="7"
     )
     return render_template('example_fullmap.html', fullmap=fullmap)
 

@@ -5,7 +5,13 @@ from flask_api import FlaskAPI, status, exceptions
 from flask import Flask, render_template
 from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map, icons
-import json
+import json, requests
+
+
+port = 5000
+debug = True
+reload = True
+
 
 app = FlaskAPI(__name__, template_folder="templates")
 
@@ -15,53 +21,94 @@ app.config['GOOGLEMAPS_KEY'] = "AIzaSyByCF9JlHWGthilogp3Q-Y1qiNaqRtZ6ZQ"
 # you can also pass key here
 GoogleMaps(app, key="AIzaSyByCF9JlHWGthilogp3Q-Y1qiNaqRtZ6ZQ")
 
+#begin Auxiliary Functions
 def LLR():
-    llr_dict = {}
+    table = []
+    llr_table = []
+    count = 0
 
-	# Reading data back
-    with open('MODIS_C6_Global_24h.json') as json_file:
-        for string in json_file:
-            data = json.loads(string)
-            lon = float(data['longitude'])
-            lat = float(data['latitude'])
-            scan = data['scan']
-            track = data['track']
-            radius = round((float(scan) * float(track) / 2) * 750, 2) #kilometers rounded to two decimal places 
+    with open('MODIS_C6_Global_24h.json', 'r') as data_file:
+        for line in data_file:
+            try:
+                j = line.split('|')[-1]
+                table.append(json.loads(j))
+            except ValueError:
+                print("Bad Json File!")
+                continue
+			
+    for row in table:
+            lon = float(row['longitude'])
+            lat = float(row['latitude'])
+            scan = row['scan']
+            track = row['track']
+            radius = (float(scan) * float(track) / 2) * 750 #kilometers
+            radius = round(radius, 2) #round to two decimal places
             stroke_color = "FF0000"
             fill_color = "FF0000"
-            llr_dict.update({'stroke_color': 'FF0000',
-            'fill_color': 'FF0000',
-            'center': {'longitude': lon,
-            'latitude': lat},
-            'radius': radius,
-            'infobox': 'Activate Fire Area as reporterd'})
-    '''for i in llr_dict:
-        print (i, llr_dict[i])
-            #print(stroke_color,fill_color,lon,lat,radius)'''
-    return llr_dict
+            if count < 3240 and lat < upper and lat > lower and lon > left and lon < right:
+                llr_table.append([lat,lon,radius])
+                count = count + 1
+			
+    return llr_table
 
+	
+def get_ip():
+	'''finds the useres IP address and returns it.'''
+	ipdata = requests.get('http://jsonip.com/')
+	ipresp = ipdata.json()
+	ip = ipresp.get('ip')
+	return ip
+
+
+def geoip(ip):
+	'''retireves and reports users geoip information'''
+	resp = requests.get('http://freegeoip.net/json/' + ip)
+	data = resp.json()
+	return(data)
+
+def geoip_coords(ip):
+    '''retrieves and reports users geoip infromations limited down to 
+	location coordinates only'''
+    resp = requests.get('http://freegeoip.net/json/' + ip)
+    data = resp.json()
+    lat = data.get('latitude')
+    lng = data.get('longitude')
+    return(lat,lng)
+
+#End Auxilary Functions
+#Begin API
 @app.route("/api/", methods=['GET', 'POST'])
 def Dump_sat():
-	'''
-	curl -H "Content-Type: application/json" -X POST -d '{"TeamID": "Mudkips","IP": "192.168.0.1","Port": "5001"}' http://localhost:5001/checkin/
-	'''
+    '''
+    dumps all MODIS data in JSON format.
+    '''
 
-	SatDataTable = []
+    SatDataTable = []
 
-	with open('MODIS_C6_Global_24h.json', 'r') as SatData:
-		for line in SatData:
-			try:
-				j = line.split('|')[-1]
-				SatDataTable.append(json.loads(j))
-			except ValueError:
-				print("Bad Json File!")
-				continue
+    with open('MODIS_C6_Global_24h.json', 'r') as SatData:
+        for line in SatData:
+            try:
+                j = line.split('|')[-1]
+                SatDataTable.append(json.loads(j))
+            except ValueError:
+                print("Bad Json File!")
+                continue
 
 
-	return {"Satellite Data": SatDataTable}
-	
-@app.route('/fullmap')
+    return {"Satellite Data": SatDataTable}
+
+
+#End API
+#Begin Map
+@app.route('/')
 def fullmap():
+    global lat, lng, left, right, upper, lower
+    ip = '108.209.71.76'
+    lat, lng = geoip_coords(ip)
+    upper = lat + 25.0
+    right = lng + 25.0
+    lower = lat - 25.0
+    left = lng - 25.0
     firedata = LLR()
     fullmap = Map(
         identifier="fullmap",
@@ -74,14 +121,14 @@ def fullmap():
             "position:absolute;"
             "z-index:200;"
         ),
-        lat=34.715820,
-        lng=-86.597105,
+        lat= lat,
+        lng= lng,
         markers=[
             {
-                'icon': '//maps.google.com/mapfiles/ms/icons/blue-dot.png',
-                'lat': 34.716769,
-                'lng': -86.597240,
-                'infobox': "Sensor: 1, Temp: 86, humidity: 46% ALERT: False"
+                'icon': '//maps.google.com/mapfiles/ms/icons/green-dot.png',
+                'lat': lat,
+                'lng': lng,
+                'infobox': "location of user at IP: " + ip
             },
             {
                 'icon': '//maps.google.com/mapfiles/ms/icons/blue-dot.png',
@@ -120,21 +167,22 @@ def fullmap():
                 'infobox': "Sensor: 7, Temp: 86, humidity: 46% ALERT: False"
             }
         ],
-        circles=[{
-            'stroke_color': '#FF00FF',
-            'stroke_opacity': 1.0,
-            'stroke_weight': 7,
-            'fill_color': '#FF00FF',
-            'fill_opacity': 0.2,
-            'center': {
-                'lat': 34.713811,
-                'lng': -86.594352
-            },
-            'radius': 200,
-            'infobox': "This is a circle"
-        }],
-        maptype = "TERRAIN",
-        zoom="16"
+		rectangle = {
+            'stroke_color': '#4286f4',
+            'stroke_opacity': 1,
+            'stroke_weight': 25,
+            'fill_color': '#4286f4',
+            'fill_opacity': 1,
+            'bounds': {
+                'north': upper,
+                'south': lower,
+                'east': right,
+                'west': left
+            }
+        },
+        circles=firedata,
+        maptype="TERRAIN",
+        zoom="7"
     )
     return render_template('example_fullmap.html', fullmap=fullmap)
 
