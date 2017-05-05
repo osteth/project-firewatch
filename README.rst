@@ -201,18 +201,23 @@ Additionally, a green marker is dropped were the program believes the user is lo
 Map Features
 ------------------------------
 Displays Semi-Realtime MODIS Satellite gathered wildfire Information.
+
 .. image:: https://i.imgur.com/RQYuLHp.png
 
 Displays Status and information about custom fire sensors.
+
 .. image:: https://i.imgur.com/1v6zC9t.png
 
 Satellite Information allows the user to get a broad picture of where the fire is located.
+
 .. image:: http://i.imgur.com/rY0eS3S.png
 
 Project Firewatch located user's location and automatically focus the map for ease of use. 
+
 .. image:: https://i.imgur.com/UwEpmKT.png
 
 showing 25-degree bounding box size.
+
 .. image:: https://i.imgur.com/IwsUOVH.png
 
 
