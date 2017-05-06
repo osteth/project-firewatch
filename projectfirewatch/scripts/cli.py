@@ -179,7 +179,10 @@ def fullmap():
                 'icon': '//maps.google.com/mapfiles/ms/icons/green-dot.png',
                 'lat': lat,
                 'lng': lng,
-                'infobox': "location of user at IP: " + ip
+                'infobox': "<center><h2>Your Location is " + str(lat) + ", " + str(lng) + ".</br>"
+                    "Sign-up for Personalized "
+                    "Wildfire Email Notifications.</h2>"
+                    "<button type=\"submit\" class=\"signupbtn\">Sign Up</button></center>"
             },
             {
                 'icon': '//maps.google.com/mapfiles/ms/icons/blue-dot.png',
