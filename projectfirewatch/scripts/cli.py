@@ -128,9 +128,9 @@ def geoip_coords(ip):
 
 #Begin API
 @app.route("/api/", methods=['GET', 'POST'])
-def Dump_sat():
+def Project_Firewatch():
     '''
-    dumps all MODIS data in JSON format.
+    Returns all Project Firewatch data in JSON format.  See Documentation for filering options. https://github.com/osteth/project-firewatch
     '''
 
     SatDataTable = []
