@@ -216,6 +216,10 @@ Project Firewatch located user's location and automatically focus the map for ea
 
 .. image:: https://i.imgur.com/xVVpJKH.png
 
+Reports your locations and helps you sign up for email notifications.
+
+.. image:: https://i.imgur.com/V2QD618.png
+
 showing 25-degree bounding box size.
 
 .. image:: https://i.imgur.com/K38p6m1.png
