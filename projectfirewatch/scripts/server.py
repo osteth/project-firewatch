@@ -16,10 +16,10 @@ reload = True
 app = FlaskAPI(__name__, template_folder="templates")
 
 # you can set key as config
-app.config['GOOGLEMAPS_KEY'] = "AIzaSyByCF9JlHWGthilogp3Q-Y1qiNaqRtZ6ZQ"
+app.config['GOOGLEMAPS_KEY'] = os.environ["GOOGLE_MAPS_API_KEY"]
 
 # you can also pass key here
-GoogleMaps(app, key="AIzaSyByCF9JlHWGthilogp3Q-Y1qiNaqRtZ6ZQ")
+GoogleMaps(app, key=os.environ["GOOGLE_MAPS_API_KEY"])
 
 #begin Auxiliary Functions
 def LLR():
